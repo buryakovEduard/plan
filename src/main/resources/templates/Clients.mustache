@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="menu" align="center">
+    <a href="./clients">Клиенты</a>
+    <a href="./storage">Склад</a>
+    <a href="./orders">Список транзакций за период</a>
+    <a href="./top">топ</a>
+</div>
+<table border="1" align="center">
+    <tr>
+        <td>ID клиента</td>
+        <td>Имя</td>
+        <td>Общая стоимость покупок</td>
+    </tr>
+    {{#clients}}
+    <tr>
+        <td>{{id}}</td>
+        <td>{{name}}</td>
+        <td>{{purchases}} руб</td>
+
+    </tr>
+    {{/clients}}
+</table>
+</body>
+</html>

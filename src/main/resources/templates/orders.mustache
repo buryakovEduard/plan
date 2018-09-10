@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+<div id="menu" align="center">
+    <a href="./clients">Клиенты</a>
+    <a href="./storage">Склад</a>
+    <a href="./orders">Список транзакций за период</a>
+    <a href="./top">топ</a>
+</div>
+<h1 align="center">список с 2018-09-08 по 2018-09-11</h1>
+<div id="table" align="center">
+    <table border="1">
+        <tr>
+            <td>ID клиента</td>
+            <td>ИМЯ</td>
+            <td>Продукт</td>
+            <td>Количество</td>
+            <td>дата</td>
+        </tr>
+        <tr>{{#orders}}
+            <td>{{id}}</td>
+            <td>{{client}}</td>
+            <td>{{product}}</td>
+            <td>{{count}}</td>
+            <td>{{date}}</td>
+        </tr>
+    {{/orders}}
+    </table>
+</div>
+
+</body>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClientMapper">
+
+    <resultMap id="result" type="com.example.planb.Client">
+        <result property="id" column="CLIENT_ID"/>
+        <result property="name" column="CLIENT_NAME"/>
+    </resultMap>
+
+    <select id="getAllClients" resultMap="result">
+    	SELECT * FROM clients
+    </select>
+
+    <select id="getClientById" parameterType="int" resultMap="result">
+    	SELECT * FROM clients WHERE CLIENT_ID = #{id}
+  	</select>
+
+    <insert id="insert" parameterType="com.example.planb.Client">
+        INSERT INTO  clients (CLIENT_NAME)
+        VALUES (#{name})
+    </insert>
+
+    <update id="update" parameterType="com.example.planb.Client">
+	  	UPDATE clients
+		SET
+			PURCHASES = #{purchases},
+		WHERE CLIENT_ID = #{Id};
+  </update>
+
+
+</mapper>

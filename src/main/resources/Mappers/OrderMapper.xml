@@ -1,0 +1,25 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderMapper">
+
+    <resultMap id="result" type="com.example.planb.Order">
+        <result property="id" column="ORDER_ID"/>
+        <result property="client" column="CLIENT_NAME"/>
+        <result property="product" column="PRODUCT_NAME"/>
+        <result property="count" column="PRODUCTCOUNT"/>
+        <result property="date" column="ORDERDATE"/>
+    </resultMap>
+
+    <select id="getAllOrders" resultMap="result">
+    	SELECT ORDER_ID, PRODUCT_NAME, CLIENT_NAME, ORDERDATE, PRODUCTCOUNT FROM orders INNER JOIN products p on orders.PRODUCT_ID = p.PRODUCT_ID INNER JOIN clients c on orders.CLIENT_ID = c.CLIENT_ID
+    </select>
+
+    <select id="getOrderById" parameterType="int" resultMap="result">
+    	SELECT ORDER_ID, PRODUCT_NAME, CLIENT_NAME, ORDERDATE, ORDERSUMM, PRODUCTCOUNT FROM orders INNER JOIN products p on orders.PRODUCT_ID = p.PRODUCT_ID INNER JOIN clients c on orders.CLIENT_ID = c.CLIENT_ID WHERE ORDER_ID = #{id}
+  	</select>
+
+    <insert id="insert" parameterType="com.example.planb.Order">
+        INSERT INTO  orders (PRODUCT_ID, CLIENT_ID, ORDERDATE, PRODUCTCOUNT)
+        VALUES (#{productId},#{clientId},#{date},#{count})
+    </insert>
+
+</mapper>

@@ -1,0 +1,28 @@
+
+html, body
+{
+    height: 100%;
+}
+
+body
+{
+    margin: 0px;
+    padding: 0pxж
+}
+table {width: 600px;}
+#table{
+    align-self: center;
+    align-content: center;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+#menu{
+    align-self: center;
+    align-content: center;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
