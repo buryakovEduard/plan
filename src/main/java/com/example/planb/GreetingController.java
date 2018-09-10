@@ -30,7 +30,7 @@ public class GreetingController {
 //        Imitation.newClient("Misha");
 //        Imitation.newProduct(90,"cola");
 //        Imitation.productToStorage(2, 20);
-            Imitation.newOrder(50, "2018-07-14", 1, 1);
+//           Imitation.newOrder(50, "2018-07-14", 1, 1);
         return "main";
 
     }
