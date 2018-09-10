@@ -6,8 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.util.List;
 /*
-ЗЗдесть реализованны методы для работы с таблицей orders
-НЕ УСПЕЛ ДО КОНЦА ЗАКОНЧИТЬ
+Здесть реализованны методы для работы с таблицей orders
  */
 public class OrderService {
     private SqlSessionFactory sqlSessionFactory;
@@ -27,7 +26,7 @@ public class OrderService {
             session.close();
         }
     }
-    //Записать (НЕ ЗАКОНЧИЛ)
+    //Записать новую транзакцию и изменить поля в других таблицах по формулам
     public void insert(Order order){
 
         SqlSession session = sqlSessionFactory.openSession();
@@ -35,16 +34,15 @@ public class OrderService {
         try {
             session.insert("OrderMapper.insert", order);
             ClientService clientService = new ClientService();
-            List<Client> client = clientService.selectClient(order.getClientId());
             ProductService productService = new ProductService();
-            List<ProductType> product = productService.selectProduct(order.getProductId());
-            ProductType p = product.get(0);
-            p.setCount(p.getCount()- order.getCount());
+            Client client = clientService.selectClient(order.getClientId()); // находит клинета по id который указан в транзакции
+            ProductType p = productService.selectProduct(order.getProductId()); // находит продукт по id который указан в транзакции
+// добавляет сумму в поле общей суммы клиета по формуле (нанешняя сумма + (цена товара * количество купленного товара))
+            client.setPurchases(client.getPurchases() + (p.getPrice() * order.getCount()));
+            clientService.update(client);
+// изменяет количество товара на складе по формуле (нынешнее количество - колчество купленного товара)
+            p.setCount(p.getCount() - order.getCount());
             productService.update(p);
-            Client c = client.get(0);
-            c.setPurchases(c.getPurchases() + (p.getPrice() * p.getCount()));
-            clientService.update(c);
-
             session.commit();
         } finally {
             session.close();

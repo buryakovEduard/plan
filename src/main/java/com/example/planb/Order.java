@@ -2,21 +2,13 @@ package com.example.planb;
 
 
 public class Order {
-    private long id;
-    private long count;
+    private int id;
+    private int count;
     private long date;
     private String product;
     private String client;
-    private long productId;
-    private long clientId;
-
-    public String getProduct() {
-        return product;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
-    }
+    private int productId;
+    private int clientId;
 
     public String getClient() {
         return client;
@@ -26,19 +18,27 @@ public class Order {
         this.client = client;
     }
 
-    public long getId() {
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(long count) {
+    public void setCount(int count) {
         this.count = count;
     }
 
@@ -50,32 +50,21 @@ public class Order {
         this.date = date;
     }
 
-    public long getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(long productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 
-    public long getClientId() {
+    public int getClientId() {
         return clientId;
     }
 
-    public void setClientId(long clientId) {
+    public void setClientId(int clientId) {
         this.clientId = clientId;
     }
 
-    public Order(){
 
-    }
-
-
-    public Order(long id, long count, long date, long productId, long clientId) {
-        this.id = id;
-        this.count = count;
-        this.date = date;
-        this.productId = productId;
-        this.clientId = clientId;
-    }
 }

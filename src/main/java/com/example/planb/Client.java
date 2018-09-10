@@ -1,23 +1,32 @@
 package com.example.planb;
 
 public class Client {
-    private long id;
+    private int id;
     private String name;
-    private long purchases = 0;
+    private int purchases = 0;
 
-    public long getPurchases() {
+    public Client(){
+
+    }
+
+    public Client(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getPurchases() {
         return purchases;
     }
 
-    public void setPurchases(long purchases) {
+    public void setPurchases(int purchases) {
         this.purchases = purchases;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -28,11 +37,5 @@ public class Client {
     public void setName(String name) {
         this.name = name;
     }
-    public Client(){
 
-    }
-    public Client(long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 }

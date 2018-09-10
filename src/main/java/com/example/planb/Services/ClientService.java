@@ -30,13 +30,13 @@ public class ClientService {
         }
     }
     //выбрать по id
-    public List<Client> selectClient(long id){
+    public Client selectClient(int id){
         System.out.println(id);
 
         SqlSession session = sqlSessionFactory.openSession();
 
         try {
-            List<Client> list = session.selectList("ClientMapper.getClientById", (int)id);
+            Client list = session.selectOne("ClientMapper.getClientById", (int)id);
             return list;
         } finally {
             session.close();

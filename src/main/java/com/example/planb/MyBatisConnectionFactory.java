@@ -15,13 +15,9 @@ public class MyBatisConnectionFactory {
 	static {
 
 		try {
-
 			String resource = "mybatis-config.xml";
 			Reader reader = Resources.getResourceAsReader(resource);
-
-			if (sqlSessionFactory == null) {
-				sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-			}
+			if (sqlSessionFactory == null) sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 		}
 
 		catch (FileNotFoundException fileNotFoundException) {

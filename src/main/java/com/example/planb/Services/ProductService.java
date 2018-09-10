@@ -31,13 +31,13 @@ public class ProductService {
         }
     }
 
-    public List<ProductType> selectProduct(long id){
+    public ProductType selectProduct(long id){
 
         SqlSession session = sqlSessionFactory.openSession();
 
         try {
-            List<ProductType> list = session.selectList("ProductMapper.getProductById", id);
-            return list;
+            ProductType product = session.selectOne("ProductMapper.getProductById", (int)id);
+            return product;
         } finally {
             session.close();
         }
@@ -60,7 +60,7 @@ public class ProductService {
         SqlSession session = sqlSessionFactory.openSession();
 
         try {
-            session.insert("ClientMapper.update", productType);
+            session.insert("ProductMapper.update", productType);
             session.commit();
         } finally {
             session.close();

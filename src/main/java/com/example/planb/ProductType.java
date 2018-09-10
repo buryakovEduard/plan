@@ -1,35 +1,35 @@
 package com.example.planb;
 
 public class ProductType {
-    private long id;
+    private int id;
     private String nameProduct;
     private int price;
-    private long count;
+    private int count;
 
     public ProductType(){
 
     }
 
-    public ProductType(long id, String nameProduct, int price, long count) {
+    public ProductType(int id, String nameProduct, int price, int count) {
         this.id = id;
         this.nameProduct = nameProduct;
         this.price = price;
         this.count = count;
     }
 
-    public long getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(long count) {
+    public void setCount(int count) {
         this.count = count;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

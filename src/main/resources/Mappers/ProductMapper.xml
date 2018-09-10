@@ -24,8 +24,8 @@
     <update id="update" parameterType="com.example.planb.ProductType">
 	  	UPDATE products
 		SET
-			Count = #{count},
-		WHERE PRODUCT_ID = #{id};
+			Count = #{count}
+		WHERE PRODUCT_ID = #{id}
   </update>
 
 </mapper>

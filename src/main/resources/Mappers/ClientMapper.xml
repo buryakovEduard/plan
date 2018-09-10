@@ -19,11 +19,11 @@
         VALUES (#{name})
     </insert>
 
-    <update id="update" parameterType="com.example.planb.Client">
+    <update id="update" parameterType="com.example.planb.Client" >
 	  	UPDATE clients
 		SET
-			PURCHASES = #{purchases},
-		WHERE CLIENT_ID = #{Id};
+			PURCHASES = #{purchases}
+		WHERE CLIENT_ID = #{id}
   </update>
 
 

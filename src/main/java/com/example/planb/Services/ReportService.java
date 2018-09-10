@@ -12,7 +12,7 @@ public class ReportService {
         List<Order> newList = new ArrayList<>();
 
         for(Order j: list){
-            Order temp = new Order();
+            Order temp = new Order(); //новый объект для отчёта
             temp.setClient(j.getClient());
             temp.setClientId(j.getClientId());
             for(Order o : list) {
@@ -30,7 +30,7 @@ public class ReportService {
         long f = 0;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            f = formatter.parse(date).getTime();
+            f = formatter.parse(date).getTime(); // парсит дату и переводит миллисекунды
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -41,23 +41,19 @@ public class ReportService {
         List<Order> newlist = new ArrayList<>();
         long f = formatDate(from);
         long t = formatDate(to);
-
-        for (Order i : list){
-            System.out.println(i.getDate());
+        for (Order i : list){ //возвращает новый List с объектами которые находятся в заданном промежутке времени
             if(i.getDate()* 1000 >= f && i.getDate() * 1000 <= t){
                 newlist.add(i);
             } }
         newlist.sort(Comparator.comparing(Order::getDate));
         Collections.reverse(newlist);
         return newlist;
-    };
+    }
     //топ 10
     public static List<Order> getTop(List<Order> list, String from, String to){
         List<Order> newlist = new ArrayList<>();
         newlist = ReportService.getInterval(list,from,to);
         newlist = ReportService.client(newlist);
-
-
         return newlist;
     }
 }
